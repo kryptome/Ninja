@@ -7,6 +7,7 @@ exports.req = function (link) {
             if (error && response.statusCode == 200) {
                 reject();
             }
+            body=JSON.parse(body);
             fulfill(body);
         });
     });
