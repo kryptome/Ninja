@@ -1,0 +1,16 @@
+{
+  "name": "movizu",
+  "version": "1.0.0",
+  "description": "Movie bot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Piyush Mishra",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.7.8",
+    "node-telegram-bot-api": "^0.26.0",
+    "request": "^2.79.0"
+  }
+}
