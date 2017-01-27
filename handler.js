@@ -22,7 +22,7 @@ exports.messageHandler = function (bot, msg) {
         case msg.hasOwnProperty('sticker'):
             break;
         default:
-            bot.sendMessage(msg.chat.id, "I don't know what you said :(");
+            bot.sendMessage(msg.chat.id, "I don't know what you said :( ,/start for more details");
             break;
     }
 
@@ -35,7 +35,7 @@ function handleText(bot, msg) {
         case "/start":
             bot.sendMessage(msg.chat.id, "Hi there, I am running in beta mode so if i say something gibberish then deal with it " +
                 "\ntype /movie to get a list of movies \ntype /weather <cityname> for weather info \ntype /joke for a random joke" +
-                "\nsend me location to get Info about it");
+                "\ntype /catfacts for random cat facts" + "\nsend me location to get Info about it");
             break;
         case "/movie":
             util.req("https://yts.ag/api/v2/list_movies.json?limit=1").then(function (obj) {
@@ -65,8 +65,13 @@ function handleText(bot, msg) {
                 bot.sendMessage(msg.chat.id, string);
             });
             break;
+        case "/catfacts":
+            util.req("http://catfacts-api.appspot.com/api/facts").then(function (data) {
+                bot.sendMessage(msg.chat.id, "*Random Fact* : " + data.facts[0], config.markdown);
+            });
+            break;
         default:
-            bot.sendMessage(msg.chat.id, "I don't know what you said :(");
+            bot.sendMessage(msg.chat.id, "I don't know what you said :( /start for more details");
             break;
     }
 }
