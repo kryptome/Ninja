@@ -3,8 +3,7 @@ var config = require('./config');
 var weather = require('./core/code/weather');
 exports.messageHandler = function (bot, msg) {
     handleText(bot, msg);
-    /*
-    switch (msg) {
+    switch (true) {
         case msg.hasOwnProperty('text'):
             handleText(bot, msg);
             break;
@@ -20,8 +19,11 @@ exports.messageHandler = function (bot, msg) {
             break;
         case msg.hasOwnProperty('sticker'):
             break;
+        default:
+            bot.sendMessage(msg.chat.id, "I don't know what you said :(");
+            break;
     }
-    */
+
 }
 
 function handleText(bot, msg) {
@@ -50,6 +52,11 @@ function handleText(bot, msg) {
             weather.getWeather(args[1]).then(function (str) {
                 bot.sendMessage(msg.chat.id, str);
             });
+            break;
+        default:
+            bot.sendMessage(msg.chat.id, "I don't know what you said :(");
+            break;
+
 
     }
 }
