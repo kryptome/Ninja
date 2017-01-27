@@ -7,7 +7,8 @@ exports.getWeather = function (city) {
     }
     return new Promise(function (fulfill, reject) {
         if (!city) {
-            fulfill("Use /weather < Cityname > to get weaather details");
+            var str = "Use /weather < Cityname > to get weaather details";
+            fulfill(str);
         }
         var query = new YQL('select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")');
         query.exec(function (err, data) {
@@ -20,10 +21,11 @@ exports.getWeather = function (city) {
                 var astronomy = data.query.results.channel.astronomy;
                 var location = data.query.results.channel.location;
                 var condition = data.query.results.channel.item.condition;
+                var currentTime=data.query.results.channel.lastBuildDate;
                 var celcius = ((condition.temp - 32) * (5 / 9));
                 celcius = celcius.toFixed(2);
-                var str = 'The current weather in ' + location.city + ', ' + location.region + ' is ' + celcius + '°C. ' +
-                    "Sunrise : " + astronomy.sunrise + " Sunset : " + astronomy.sunset
+                var str = '\nThe current weather in *' + location.city + '*, ' + location.region + ' is ' + celcius + '°C. ' +
+                    "Sunrise : " + astronomy.sunrise + " Sunset : " + astronomy.sunset+"\n*Current time* : "+currentTime;
                 fulfill(str);
             }
         });

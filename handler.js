@@ -1,6 +1,7 @@
 var util = require('./util');
 var config = require('./config');
 var weather = require('./core/code/weather');
+var location = require('./core/code/location');
 exports.messageHandler = function (bot, msg) {
     switch (true) {
         case msg.hasOwnProperty('text'):
@@ -15,6 +16,7 @@ exports.messageHandler = function (bot, msg) {
         case msg.hasOwnProperty('document'):
             break;
         case msg.hasOwnProperty('location'):
+            handleLocation(bot, msg);
             break;
         case msg.hasOwnProperty('sticker'):
             break;
@@ -45,17 +47,27 @@ function handleText(bot, msg) {
                     })
                 })
 
+            }).catch(function (error) {
+
             });
             break;
         case "/weather":
             weather.getWeather(args[1]).then(function (str) {
-                bot.sendMessage(msg.chat.id, str);
+                bot.sendMessage(msg.chat.id, str,config.markdown);
+            }).catch(function (error) {
+
             });
             break;
         default:
             bot.sendMessage(msg.chat.id, "I don't know what you said :(");
             break;
-
-
     }
+}
+
+function handleLocation(bot, msg) {
+    var lati=msg.location.latitude;
+    var long=msg.location.longitude;
+    location.getLocationDetails(lati,long).then(function(string){
+        bot.sendMessage(msg.chat.id,string,config.markdown);
+    });
 }

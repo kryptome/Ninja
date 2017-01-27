@@ -9,6 +9,7 @@
   "author": "Piyush Mishra",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.14.0",
     "mongoose": "^4.7.8",
     "node-telegram-bot-api": "^0.26.0",
     "request": "^2.79.0",
