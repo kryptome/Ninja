@@ -10,7 +10,7 @@
             "program": "${workspaceRoot}\\server.js",
             "cwd": "${workspaceRoot}",
             "env": {
-                "NODE_ENV": "production"
+                "NODE_ENV": "development"
             }
         },
         {

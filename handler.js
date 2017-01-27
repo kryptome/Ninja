@@ -2,7 +2,6 @@ var util = require('./util');
 var config = require('./config');
 var weather = require('./core/code/weather');
 exports.messageHandler = function (bot, msg) {
-    handleText(bot, msg);
     switch (true) {
         case msg.hasOwnProperty('text'):
             handleText(bot, msg);
