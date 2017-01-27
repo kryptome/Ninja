@@ -11,6 +11,7 @@
   "dependencies": {
     "mongoose": "^4.7.8",
     "node-telegram-bot-api": "^0.26.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "yql": "^1.0.2"
   }
 }

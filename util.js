@@ -21,7 +21,7 @@ exports.getMovieString = function (movie) {
             torrentLinks = torrentLinks + "\n*Quality* : " + torrent.quality + "\n*Size* : " + torrent.size +
                 "\n Download Link : [" + movie.title_long +" "+torrent.quality + "](" + getMagnet(torrent.hash, movie.title) + ")";
         });
-        string=string+torrentLinks;
+        //string=string+torrentLinks;
         fulfill(string);
     });
 }
