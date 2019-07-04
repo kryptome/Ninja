@@ -4,7 +4,9 @@
   "description": "Movie bot",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Piyush Mishra",
   "license": "MIT",
@@ -13,6 +15,8 @@
     "mongoose": "^4.7.8",
     "node-telegram-bot-api": "^0.26.0",
     "request": "^2.79.0",
-    "yql": "^1.0.2"
-  }
+    "yql": "^1.0.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
